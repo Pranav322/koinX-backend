@@ -13,8 +13,9 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// Routes will be added here
-// app.use('/api', require('./routes'));
+// Routes
+const cryptoRoutes = require('./routes/crypto.routes');
+app.use('/api', cryptoRoutes);
 
 // 404 handler
 app.use((_req, res) => {
@@ -30,4 +31,4 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-module.exports = app; 
+module.exports = app;
