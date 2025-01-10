@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+require('./jobs/cryptoPriceJob');
 
 const app = express();
 
@@ -14,8 +15,7 @@ mongoose
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
-const cryptoRoutes = require('./routes/crypto.routes');
-app.use('/api', cryptoRoutes);
+app.use('/api', require('./routes/crypto.routes'));
 
 // 404 handler
 app.use((_req, res) => {
