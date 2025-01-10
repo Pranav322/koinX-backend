@@ -57,13 +57,55 @@ npm start
 
 ## API Endpoints
 
-### GET /api/crypto/prices
+### Get Latest Price Statistics
 
-Get the latest cryptocurrency prices
+http
+GET /api/stats?coin={coinName}
 
-### GET /api/crypto/history/:symbol
+Query Parameters:
 
-Get historical price data for a specific cryptocurrency
+| Parameter | Type     | Description                                                  |
+| :-------- | :------- | :----------------------------------------------------------- |
+| `coin`    | `string` | **Required**. One of: `bitcoin`, `ethereum`, `matic-network` |
+
+#### Sample Response
+
+```json
+{
+  "price": 95131,
+  "marketCap": 1883152149766.19,
+  "24hChange": 3.37
+}
+```
+
+### Get Price Standard Deviation
+
+http
+GET /api/deviation?coin={coinName}
+
+Query Parameters:
+
+| Parameter | Type     | Description                                                  |
+| :-------- | :------- | :----------------------------------------------------------- |
+| `coin`    | `string` | **Required**. One of: `bitcoin`, `ethereum`, `matic-network` |
+
+#### Sample Response
+
+```json
+{
+  "deviation": 4082.48
+}
+```
+
+### Example Usage
+
+```bash
+# Get Bitcoin stats
+curl "https://coinx-api-511b803dd006.herokuapp.com/api/stats?coin=bitcoin"
+
+# Get Ethereum deviation
+curl "https://coinx-api-511b803dd006.herokuapp.com/api/deviation?coin=ethereum"
+```
 
 ## Scripts
 
