@@ -4,24 +4,25 @@ const cryptoPriceSchema = new mongoose.Schema({
   symbol: {
     type: String,
     required: true,
-    enum: ['BTC', 'ETH', 'MATIC']
+    enum: ['BTC', 'ETH', 'MATIC'],
   },
   priceUSD: {
     type: Number,
-    required: true
+    required: true,
   },
   marketCapUSD: {
     type: Number,
-    required: true
+    required: true,
   },
   change24h: {
     type: Number,
-    required: true
+    required: true,
   },
   timestamp: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('CryptoPrice', cryptoPriceSchema); 
+const CryptoPrice = mongoose.model('CryptoPrice', cryptoPriceSchema);
+module.exports = CryptoPrice;
